@@ -73,7 +73,7 @@ const pending = async (sentMessage, chatId, username) => {
   }
 }
 
-bot.onText(/\/prince (.+)/, async (msg, match) => {
+bot.onText(/\/tetra (.+)/, async (msg, match) => {
   const chatId = msg.chat.id
   const username = msg.from.username
   const now = Date.now()
