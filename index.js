@@ -17,11 +17,11 @@ async function createPrediction(text) {
       // Pinned to a specific version of Stable Diffusion
       // See https://replicate.com/stability-ai/stable-diffussion/versions
       version:
-        '436b051ebd8f68d23e83d22de5e198e0995357afef113768c20f0b6fcef23c8b', //stable-diffussion
+        '436b051ebd8f68d23e83d22de5e198e0995357afef113768c20f0b6fcef23c8b',
       input: {
-        prompt: "mdjrny-v4 style " + text,
-        width: 1024,
-        height: 576
+        prompt: "mdjrny-v4 style " + text + " , no same people or thing",
+        width: 576,
+        height: 768
       }
     },
     {
@@ -48,7 +48,7 @@ async function getPredictionStatus(id) {
   )
 
   const prediction = response.data
-  console.log(response)
+  console.log(prediction)
   return prediction
 }
 
@@ -73,7 +73,7 @@ const pending = async (sentMessage, chatId, username) => {
   }
 }
 
-bot.onText(/\/tetra (.+)/, async (msg, match) => {
+bot.onText(/\/elonpepe (.+)/, async (msg, match) => {
   const chatId = msg.chat.id
   const username = msg.from.username
   const now = Date.now()
@@ -109,9 +109,9 @@ bot.onText(/\/tetra (.+)/, async (msg, match) => {
   let response = null
   let nCount = 0;
   while (prediction.status !== 'succeeded' && prediction.status !== 'failed') {
-    await sleep(1000);
+    await sleep(2500);
     nCount++;
-    if (nCount >= 60) {
+    if (nCount >= 24) {
       break;
     }
     response = await getPredictionStatus(prediction.id)
@@ -126,8 +126,7 @@ bot.onText(/\/tetra (.+)/, async (msg, match) => {
     })
     console.log('Generated for @' + username)
   } else {
-    -
-      bot.sendMessage(chatId, 'Sorry. could you again please.');
+    bot.sendMessage(chatId, 'Sorry. could you again please.');
   }
 })
 
