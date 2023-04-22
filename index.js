@@ -19,7 +19,7 @@ async function createPrediction(text) {
       version:
         '436b051ebd8f68d23e83d22de5e198e0995357afef113768c20f0b6fcef23c8b',
       input: {
-        prompt: "mdjrny-v4 style " + text + " , no same people or thing",
+        prompt: "mdjrny-v4 style " + text + " , no same people",
         width: 576,
         height: 768
       }
